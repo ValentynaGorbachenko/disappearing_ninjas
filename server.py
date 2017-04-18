@@ -14,6 +14,23 @@ def all_ninjas():
 @app.route('/ninjas/<color>')
 def ninjas_by_color(color):
 	print color
-	return render_template('partials/_by_color.html', color=color)
+	ninja_colors ={
+		'red': {'name': 'Raphael', 'path': 'img/raphael.jpg'},
+		'blue': {'name': 'Leonardo', 'path': 'img/leonardo.jpg'},
+		'orange': {'name': 'Michelangelo', 'path': 'img/michelangelo.jpg'},
+		'purple': {'name': 'Donatello', 'path': 'img/donatello.jpg'},
+		'other': {'name': 'Not April', 'path': 'img/notapril.jpg'}
+	}
+	data = {}
+	if color in ninja_colors:
+		print "hey there"
+		data['path'] = ninja_colors[color]['path']
+		data['name'] = ninja_colors[color]['name']
+		print data
+	else:
+		data['path'] = ninja_colors['other']['path']
+		data['name'] = ninja_colors['other']['name'];
+	print data
+	return render_template('partials/_by_color.html', data = data)
 
 app.run(debug=True)
