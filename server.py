@@ -11,4 +11,9 @@ def all_ninjas():
 	print "inside the ninjas"
 	return render_template('partials/_all_ninjas.html')
 
+@app.route('/ninjas/<color>')
+def ninjas_by_color(color):
+	print color
+	return render_template('partials/_by_color.html', color=color)
+
 app.run(debug=True)

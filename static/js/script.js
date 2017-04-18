@@ -1,6 +1,6 @@
 "use strict";
 $(document).ready(function(){
-	$('body').on('click', 'a', function(){
+	$('body').on('click', 'a', function(event){
 		event.preventDefault();
 		console.log($(this).attr("href"));
 		$.get($(this).attr('href'), function(response){
